@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0.5em 0;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 0.5em 0;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin-top: 1em;
+        }
+
+        .countdown div {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 0 10px;
+            padding: 10px 20px;
+        }
+
+        .countdown span {
+            display: block;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>We're working hard to bring you a great experience!</p>
+        <div class="countdown">
+            <div>
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+            <div>
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const countdown = () => {
+            const countDate = new Date('December 31, 2024 00:00:00').getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            const days = Math.floor(gap / day);
+            const hours = Math.floor((gap % day) / hour);
+            const minutes = Math.floor((gap % hour) / minute);
+            const seconds = Math.floor((gap % minute) / second);
+
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        };
+
+        setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
