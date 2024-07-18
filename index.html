@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coming Soon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+            background-color: #fff;
+        }
+        
+        .countdown {
+            font-size: 36px;
+            margin-top: 20px;
+        }
+        
+        .button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Coming Soon...</h1>
+        <p>We're working hard to bring you an amazing new website! Check back soon.</p>
+        <div class="countdown" id="countdown"></div>
+        <button class="button" onclick="startCountdown()">Start Countdown</button>
+    </div>
+    
+    <script>
+        function startCountdown() {
+            var countdownDate = new Date("2023-03-15T14:30:00.000Z"); // Replace with your desired countdown date
+            var now = new Date();
+            var timeLeft = (countdownDate.getTime() - now.getTime());
+            
+            if (timeLeft > 0) {
+                var days = Math.floor(timeLeft / (1000 * 3600 * 24));
+                var hours = Math.floor((timeLeft % (1000 * 3600 * 24)) / (1000 * 3600));
+                var minutes = Math.floor((timeLeft % (1000 * 3600)) / (1000 * 60));
+                var seconds = Math.floor(timeLeft / 1000 % 60);
+                
+                document.getElementById("countdown").innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left`;
+                setTimeout(function() {
+                    startCountdown();
+                }, 1000); // Update every second
+            }
+        }
+        
+        startCountdown();
+    </script>
+</body>
+</html>
